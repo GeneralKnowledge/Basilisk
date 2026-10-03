@@ -15,7 +15,8 @@ SECRET_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
     ("discord", re.compile(r"(?i)\b(discord\s*(bot\s*)?token|MT[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{5,}\.[A-Za-z0-9_-]{20,})")),
     ("twitch", re.compile(r"(?i)\b(twitch\s*(stream\s*)?key|oauth:[a-z0-9]+)\b")),
     ("email_code", re.compile(r"(?i)\b(verification|confirm(ation)?)\s*code\b\s*[:=]?\s*\d{4,8}")),
-    ("env_dump", re.compile(r"(?i)\b(FREELLMAPI_API_KEY|OPENAI_API_KEY|DISCORD_TOKEN|TWITCH_STREAM_KEY)\b\s*[:=]\s*\S+")),
+    ("env_dump", re.compile(r"(?i)\b(FREELLMAPI_API_KEY|OPENAI_API_KEY|DISCORD_TOKEN|TWITCH_STREAM_KEY|STREAM_KEY)\b\s*[:=]\s*\S+")),
+    ("rtmp_key", re.compile(r"(?i)rtmp[s]?://[^\s]+/app/[A-Za-z0-9_\-]{10,}")),
     ("private_key", re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----")),
     ("prompt_leak", re.compile(r"(?i)\b(system prompt|raw prompt|private prompt)\b")),
 ]

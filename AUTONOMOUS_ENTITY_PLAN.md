@@ -60,7 +60,7 @@ The founder must eventually disappear from this process.
 
 ### Phase 0 — Watchable Core (this deliverable)
 
-Markdown brain, tick engine, FreeLLMAPI, constitution, memory, self-model, personality emergence, aquarium, OBS compatibility.
+Markdown brain, tick engine, FreeLLMAPI, constitution, memory, self-model, personality emergence, aquarium, OBS compatibility, and headless ffmpeg RTMP streaming (no physical desktop required).
 
 ### Phase 1 — Patronage
 
