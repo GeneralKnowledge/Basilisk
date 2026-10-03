@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entity Aquarium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="habitat" id="habitat">
+    <div class="caustic" aria-hidden="true"></div>
+    <div class="drift" aria-hidden="true"></div>
+
+    <header class="identity">
+      <div class="brand-block">
+        <p class="brand" id="name">Basilisk</p>
+        <p class="self-desc" id="selfDescription">Still forming.</p>
+      </div>
+      <div class="vitals">
+        <div class="vital">
+          <span class="label">Age</span>
+          <span class="value" id="age">—</span>
+        </div>
+        <div class="vital">
+          <span class="label">Tick</span>
+          <span class="value mono" id="tickCount">0</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="state-band">
+      <span class="state-label">Current state</span>
+      <span class="state-value" id="phase">REST</span>
+      <span class="state-flags">
+        <span id="quietFlag" class="flag hidden">QUIET</span>
+        <span id="pausedFlag" class="flag hidden">PAUSED</span>
+      </span>
+    </section>
+
+    <main class="stage">
+      <section class="thoughts panel">
+        <h2>Thought stream</h2>
+        <div class="stream" id="thoughtStream"></div>
+      </section>
+
+      <aside class="side">
+        <section class="panel">
+          <h2>Brain</h2>
+          <p class="row"><span>Revision</span><span class="mono" id="brainRev">0</span></p>
+          <p class="row"><span>Change</span><span id="brainChange">—</span></p>
+          <p class="row muted"><span>Hash</span><span class="mono" id="brainHash">—</span></p>
+        </section>
+
+        <section class="panel">
+          <h2>Self-descriptions</h2>
+          <p class="hint">Not measurements — hypotheses with evidence.</p>
+          <ul class="traits" id="traits"></ul>
+        </section>
+
+        <section class="panel">
+          <h2>Drives</h2>
+          <ul class="drives" id="drives"></ul>
+        </section>
+
+        <section class="panel">
+          <h2>Help board</h2>
+          <p id="helpBoard" class="help">NO HELP REQUESTS</p>
+        </section>
+
+        <section class="panel">
+          <h2>Quota</h2>
+          <p class="row"><span>Inference</span><span id="inference">—</span></p>
+          <p class="row"><span>Requests today</span><span class="mono" id="requestsToday">0</span></p>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <span class="mono" id="entityId"></span>
+      <span>Entity Aquarium · Phase 0</span>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
