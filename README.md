@@ -4,15 +4,20 @@ Phase 0 of an experimental autonomous computational entity that lives as a watch
 
 It runs locally, thinks on a tick loop, keeps an append-only memory, enforces a Covenant in code, and discovers personality from evidenced behaviour — not from developer-assigned traits.
 
-## Quick start
+## Kickoff
+
+**Full start guide:** [docs/KICKOFF.md](docs/KICKOFF.md)
+
+That walkthrough covers install, mock vs FreeLLMAPI, first boot, soak watching, headless Twitch streaming, operator controls, and troubleshooting — all local, no deploy.
+
+### Quick start
 
 ```bash
 python3.12 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
-# Optional: point .env at a running FreeLLMAPI gateway
-# Or set ENTITY_INFERENCE=mock for offline watching
+# ENTITY_INFERENCE=mock for offline, or point FREELLMAPI_* at a gateway
 
 python scripts/run.py
 ```
