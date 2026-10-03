@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+data/entity.sqlite
+data/entity.sqlite-*
+data/entity_signing.key
+data/entity_id.txt
+data/entity.log
+data/PAUSE
+*.egg-info/
+.DS_Store
