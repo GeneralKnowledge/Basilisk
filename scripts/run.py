@@ -45,16 +45,20 @@ def main() -> int:
     entity.start_background()
 
     server = serve(entity, host=host, port=port)
-    print(f"Aquarium: http://{host}:{port}/")
-    print("OBS Browser Source: use that URL at 1920x1080")
-    print("Pause:  curl -X POST http://127.0.0.1:%s/api/control/pause" % port)
-    print("Resume: curl -X POST http://127.0.0.1:%s/api/control/resume" % port)
+    # Flush startup lines so operators see them immediately under piping.
+    for line in (
+        f"Aquarium: http://{host}:{port}/",
+        "OBS Browser Source: use that URL at 1920x1080",
+        f"Pause:  curl -X POST http://127.0.0.1:{port}/api/control/pause",
+        f"Resume: curl -X POST http://127.0.0.1:{port}/api/control/resume",
+    ):
+        print(line, flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
         entity.stop()
         server.shutdown()
-        print("\nStopped.")
+        print("\nStopped.", flush=True)
     return 0
 
 

@@ -242,7 +242,10 @@ class TickEngine:
                     action, memory=self.memory, brain=self.brain, tick_id=tick_id
                 )
                 memory_event = action_result.get("memory_event")
-                candidate = action_result.get("public_default") or plan.get("narration") or ""
+                # Prefer planned public narration; fall back to action default.
+                candidate = plan.get("narration") or action_result.get("public_default") or ""
+                if action.action_type == ActionType.BROADCAST_PUBLIC_MESSAGE:
+                    candidate = action_result.get("public_default") or candidate
                 sanitized = sanitize_public_text(str(candidate))
                 public_narration = sanitized.text if sanitized.allowed else "…"
                 if action_result.get("reflection"):
