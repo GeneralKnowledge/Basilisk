@@ -219,4 +219,33 @@ class Entity:
         }
 
     def explain_last(self) -> dict[str, Any]:
-        return self.engine.last_explain or {"message": "No ticks yet."}
+        if self.engine.last_explain:
+            return self.engine.last_explain
+        latest = self.memory.latest_tick()
+        if not latest:
+            return {"message": "No ticks yet."}
+        payload = latest.get("payload") or {}
+        observations = payload.get("observations") or {}
+        action_result = payload.get("action_result") or {}
+        return {
+            "tick_id": latest["tick_id"],
+            "observations": {
+                "tick_count": observations.get("tick_count"),
+                "quiet_mode": observations.get("quiet_mode"),
+                "rest_ratio": observations.get("rest_ratio"),
+                "inference_health": observations.get("inference_health"),
+                "brain_revision": observations.get("brain_revision"),
+            },
+            "orientation": payload.get("orientation", ""),
+            "intention": payload.get("intention", ""),
+            "proposed_action": payload.get("proposed_action"),
+            "constitution": payload.get("constitution_result"),
+            "action_result": {
+                "ok": action_result.get("ok"),
+                "action": action_result.get("action"),
+                "blocked": action_result.get("blocked", False),
+            },
+            "reflection": payload.get("reflection", ""),
+            "public_narration": payload.get("public_narration", ""),
+            "source": "ledger",
+        }

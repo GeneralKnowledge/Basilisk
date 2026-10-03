@@ -56,3 +56,19 @@ def test_explain_last(tmp_path):
     assert explain["tick_id"]
     assert "constitution" in explain
     assert "reflection" in explain
+
+
+def test_explain_last_from_ledger_after_reload(tmp_path):
+    entity = _seed_entity(tmp_path)
+    record = entity.engine.run_once()
+    # Simulate process restart: new Entity, empty in-memory explain cache.
+    reloaded = Entity(
+        root=tmp_path,
+        tick_seconds=0.01,
+        inference=MockInferenceProvider(),
+    )
+    explain = reloaded.explain_last()
+    assert explain["tick_id"] == record.tick_id
+    assert explain.get("source") == "ledger"
+    assert "constitution" in explain
+    assert explain["reflection"]
