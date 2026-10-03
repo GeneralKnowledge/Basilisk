@@ -79,7 +79,7 @@ class Entity:
         self.memory.set_meta("birth_timestamp", birth)
         self.memory.set_meta("entity_id", self.identity.entity_id)
         self.memory.set_meta("display_name", self.identity.display_name)
-        self.brain.sync_identity_fields(self.identity.entity_id, birth)
+        # Do not mutate tracked brain/IDENTITY.md at runtime — IDs live in SQLite/API.
         brain_hash = self.brain.content_hash()
         self.memory.record_brain_revision(brain_hash, "genesis brain")
         with self.memory.transaction() as conn:
